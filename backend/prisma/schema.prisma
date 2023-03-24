@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model post {
+  id      Int    @id @default(autoincrement())
+  tittle  String @db.VarChar(255)
+  content String
+}
+
+model registro {
+  id             Int    @id @default(autoincrement())
+  nombreCompleto String @db.VarChar(100)
+  correo         String @db.VarChar(100)
+  telefono     String @db.VarChar(50)
+  contrasena     String @db.VarChar(50)
+}
+
+model kit {
+  id          Int    @id @default(autoincrement())
+  nombre      String @db.VarChar(20)
+  descripcion String @db.VarChar(30)
+  precio      Float  @db.Float
+  imagen      String @db.VarChar(80)
+}
+
+model lugares {
+  id          Int    @id @default(autoincrement())
+  nombre      String @db.VarChar(20)
+  descripcion String @db.VarChar(30)
+  imagen      String @db.VarChar(80)
+}
+
+model personal {
+  id          Int    @id @default(autoincrement())
+  nombre      String @db.VarChar(20)
+  descripcion String @db.VarChar(30)
+  rol         String @db.VarChar(10)
+  imagen      String @db.VarChar(80)
+}
